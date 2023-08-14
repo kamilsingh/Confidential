@@ -25,7 +25,7 @@ const Mailgen = require('mailgen');
 const axios = require('axios');
 const multer=require('multer');
 /*==========================middle-wares=======================================================*/
-//require('dotenv').config();
+require('dotenv').config();
 app.use(cors());
 app.use(bodyParse.urlencoded({ limit:'50mb',extended: true }));
 app.use(bodyParse.json({limit:'50mb'})); // to reciece json data in requests
@@ -46,7 +46,7 @@ const BASE_URL=process.env.BASE_URL;
 const mongoose = require('mongoose');
 
 //const mongoURI="mongodb://localhost:27017/kammm"
-const dbUrl = process.env.database;
+const dbUrl = process.env.DATABASE;
 mongoose.connect(dbUrl, { useNewUrlParser: true });
 const db = mongoose.connection;
 db.on('error', () => { console.log('connection error:') });
