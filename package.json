@@ -6,7 +6,7 @@
   "author": "kammy",
   "license": "ISC",
   "scripts": {
-    "start": "nodemon app.js &&npm run build && npm run link && npm run build:watch",
+    "start": "node app.js&&nodemon app.js &&npm run build && npm run link && npm run build:watch",
     "build": "npx babel src --delete-dir-on-start --out-dir lib",
     "build:watch": "npx nodemon",
     "lint": "npx eslint ./src",
