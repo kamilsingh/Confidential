@@ -1,0 +1,16 @@
+<html>
+    <title> Reciever </title>
+    <body>
+        <h1> welcome to redbit chat </h1> 
+        <div display="flex">
+            <div style="width:50%;height:500px;background:rgb(150, 211, 241)"><% for(let it of backup1) { %> 
+                <h3><p style="text-align:left;color: blue"> <%=it.sender %>  </p></h3>
+                <h3><p style="text-align:right;color: green"> <%=it.reciever %>  </p> </h3> 
+             <% } %> </div>
+             <div style="width:50%">
+         <form method="post" action="/sender">
+             <label for="message"> enter your message </label> <input type="text"  name="message"/> 
+              <button> send </button></form></button> 
+              </div></div>
+    </body>
+</html>

@@ -1,0 +1,56 @@
+<html>
+<title>
+Fit birds
+</title>
+<head>
+<link rel="stylesheet" href="css/first2.css">
+<script type="text/javascript" src="script/javascript.js"></script>
+<head>
+
+<body>
+<nav  >
+<ul class="top" id="drop">
+<li><a  href="/" >HOME</a></li>
+<li><a  href="#" >ABOUT</a></li>
+<li><a  href="/dash" >RESOURCES</a></li>
+<li><a  href="#" >CARRERS</a></li>
+<li><a  href="#" >CONTACT US</a></li>
+<li class="right"><a href="/login" >LOG IN</a>  </li>  
+<li class="right"> <a href="/signup" >SIGN UP</a></li>
+<li class="dropdown"><a href="javascript:void(0);" onclick="drop()">&#9776</a></li>
+</ul>
+</nav>
+
+<div class="container">
+<div class="row">
+<div class="col5">
+ <div class="signupleft" >
+ <image  class="signupad" src="images/fitness.jpg" height="400px" width="50%">
+  <image  class="signupad" src="images/fitness2.jpg" height="400px" width="50%">
+ </div>
+ 
+</div>
+<div class="col5">
+<div class="signupright">
+  <div class="heading">
+  <h2> New users </h2></div>
+   <div class="body">
+   <h5> Sign up for new users </h5>
+  <div> <label>Don't have any account </label><a href="signup"> Sign up </a>  </p> 
+  <h2> </i> Log in </i> </h2>  
+   <form name="form2" action="/loginauthen" onsubmit="return check()" method="post" >
+ <div> <p> EMAIL: <input class="inputs"  type="email" name="email" id="email"> <required> </p>  </div>
+ <div> <p> PASSWORD:<input class="inputs" type="password" name="password" id="password"> <required> </p> </div>
+  <p> <a href="/updatepassword">Forgot password</a> </p>
+   <input type="submit" id="formbutton" name="login" value="Login">
+  </form>
+  <p id="change">  </p> 
+    <p> Don't Have an Account<a href="signup">Sign Up</a> </p>
+  </div>
+   </div>
+</div>
+</div>
+</div>
+</div>
+</body>
+</html>

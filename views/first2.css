@@ -1,0 +1,518 @@
+nav{
+	
+	display:block;
+}
+
+body{
+	line-height: 1;
+	margin:0;
+	background:orange;
+	background:radial-gradient(lightgreen,orange);
+
+}
+
+
+
+
+/*==================================nav=================================*/
+
+nav{
+	
+	width:100%;
+	margin:0;
+	
+	
+}
+
+nav ul{
+	
+	background-color:transparent;
+	border:1px fade;
+	overflow:hidden;
+	margin:0;
+	padding:0;
+	
+}
+
+nav ul li{
+	
+	list-style:none;
+	
+}
+ul.top li{
+	float:left;
+}
+ul.top li.right{
+	
+	
+	float:right;
+}
+
+
+
+ul.top li a{
+	display block;
+	text-decoration:none;
+	font-size:20px;
+	min-height:25px;
+	text-align:center;
+	padding:35px;
+	text-transform:uppercase;
+	color:white;
+}
+
+ul.top li a:hover{
+	background-color:#0080ff;
+    color:#fff;
+    
+    
+}
+
+
+
+ul.top li.dropdown{
+	
+	display:none;
+	float:right;
+	
+}
+
+.inputform{
+    width: 600px;
+    margin: 1px;
+    border-radius: 9px;
+}
+#formfeed{
+  text-align:center;
+}
+
+/*=============================custom==================================*/
+.container{
+	width:100%;
+	margin:auto;
+	padding : 4% 0 4% 0;
+		
+	
+}
+
+
+#result{
+	
+	color:green;
+}
+
+.col0{width:40%;}
+.col1{width:40%;}
+.col2{width:30%;}
+.col3{width:25%;}
+.col4{width:41.33%;}
+.col5{width:50%;}
+.col6{width:58.33%;}
+.col7{width:16%;}
+.col8{width:70%;}
+.col9{width:83.33%;}
+.col10{width:91.33%;}
+.col11{width:100%;}
+
+.row{
+	width:100%;
+	display:flex;
+	flex-wrap:wrap;
+	align-items:center;
+
+}
+
+
+
+
+
+row::after{
+	
+	display:table;
+	clear:both;
+	content:"";
+}
+
+
+
+#grad {
+	//height:auto;
+	background:blue;
+	background:radial-gradient(blue,white);
+	background: -webkit-linear-gradiant(red,yellow);	
+	background: -o-linear-gradiant(red,yellow);	
+	background: -moz-linear-gradiant(red,blue);	
+	background:linear-gradiant(red,blue);	
+	//border: 1px solid red;
+	display:flex;
+	flex-wrap:wrap;
+	
+	
+	
+	}
+	
+	div.lrow{
+	    margin-left:20%;
+	    
+	   
+	}
+	
+	div.rrow{
+	 margin-left:15%;
+	
+	 
+	}
+	
+	
+	
+	.advt{
+	       color:#fff;
+	       font-size:30px;
+	       margin:0;
+	       line-height: 50px;
+	
+}
+
+form,h4 {
+	color:#fff;
+	font-family:sans-serif;
+}
+
+
+
+input[type="text"]
+{
+      padding:20px;
+      font-size:20px;
+      width:300px;
+      height:15px;
+      border-radius:25px;
+	
+}
+
+.fixer iframe{
+	position:relative;
+	width:100%;
+     overflow:hidden;
+}
+
+.icon image
+{
+	margin:auto;
+	border-radius:50%; 
+	
+	
+}
+
+.icon label{
+	font-weight:700px;
+	text-transform:lower-case;
+	
+}
+
+
+
+/*=============================mobile=======================================*/
+
+@media screen  and (max-width:680px)
+{
+	
+	ul.top li:not(:nth-child(1))
+	{
+            display:none;
+	}
+	
+	
+	ul.top.responsive li.dropdown{
+	position: absolute;
+	top:0;
+	right:0;
+	}
+	
+	ul.top li.dropdown{
+	   display:block;
+	   float:right;
+	}
+
+
+ul.top.responsive{
+	
+	positions :absolute;
+}
+
+ul.top.responsive li a{
+	
+	display :block;
+	text-align:left;
+}
+
+ul.top.responsive li {
+	
+	display :inline;
+	 float:none;
+}
+
+.col1{
+	width:100%;
+	 margin:0;
+	
+}
+div.lrow,div.rrow{
+	margin:15px;
+	
+}
+
+input[type="text"]
+{
+	
+	//width:350px;
+	//border-radius:2%;
+	padding:20px;
+      font-size:12px;
+      width:200px;
+      height:15px;
+      border-radius:25px;
+}
+
+
+.fixer iframe{
+	position:relative;
+	width:100%;
+     overflow:hidden;
+     margin:0;
+
+}
+
+.col7{
+   width:100%;
+   margin:0;
+   	
+	
+}
+.item{
+	padding:0;
+	margin:0;
+	display:block;
+	
+}
+
+
+.col8,.col2{
+	 width:100%;
+	
+}
+
+ article p{
+    font-size:5px;
+    width:100%;
+    margin:0;
+  }
+  
+  
+  
+  .col8{
+  width:100%;
+  display:block;
+  
+  }
+  .col2
+  {
+  width:100%;
+  display:block;
+  }
+  
+   
+  
+ div.footcol{
+    width:50%;
+    dispay:block;
+ 
+ }
+ 
+ .signuupleft{
+ display:none;
+ }
+ 
+ .col5
+ {
+ width:100%;
+ }
+ 
+ 
+ nav ul{
+	
+	background-color:green;
+	overflow:hidden;
+	margin:0;
+	padding:0;
+	
+}
+
+}
+
+/* ===========================section2=============================== */
+
+.sec2-head{
+	
+align:center;
+font-size:30px;
+//background:#eee;
+height:100px;
+margin:0;
+align:center;
+
+
+}
+
+.sec2-body{
+	display:flex;
+	flex-wrap:wrap;
+	//border:1px solid black;
+	//border-radius:5%;
+	margin-top:100px;
+	
+	
+}
+
+
+.item{
+
+	box-shadow: 0 0 0 1px rgba(0,0,0,.15);
+	padding:10px;
+	margin:40px 10px 40px 10px;
+border:1px outset;
+	border-radius:5%;
+	
+	
+	
+}
+
+label{
+	font-size:25px;
+   transform:lower-case;
+   font-style:bold;
+}
+
+/* ==================================sec3========================== */
+button{
+	text-align:center;
+	font-size:22px;
+	font:weight:bold;
+	padding:2px;
+	color:#fff;
+	background:blue;
+	margin-left:100px;
+	box-shadow: 0 0 0 1px rgba(0,0,0,.15);
+	
+}
+
+.mass
+{
+	margin:auto;
+	padding:5px;
+}
+
+button.enter{
+	
+	//display:block;
+	//margin:auto;
+	
+}
+
+
+
+/* ===========================section 4 =========================*/
+  article p{
+  font-size:25px;
+  line-height:1.2;
+  padding:10px;
+  margin:auto;
+  }
+  
+  
+  
+  
+  .scene{
+     display:block;
+     margin: 20px 0 30px 30px;
+     box-shadow: 0,0,0,1px rgba(0,0,0,.15);
+     
+  }
+  
+  .icon{
+      margin:auto;
+      height:200px;
+     width:100%;
+       
+  }
+  
+  
+  
+  
+  
+  .items h1,h4{
+     color:white;
+     margin:auto;
+     padding:20px;
+     
+  }
+  
+  footer.foot{
+     background-color:#666;
+     width:100%;
+     padding:50px;
+     
+  
+  }
+  
+  .signupad{
+    display:block;
+     margin:auto;
+  }
+   .signup {
+        color:black;
+   }
+   
+   .inputs {
+      padding:20px;
+      font-size:20px;
+      width:300px;
+      height:15px;
+      border-radius:25px;
+   
+   }
+   
+   #email{
+      margin-left:38px;
+   
+   }
+   
+   
+  /* ================================================signup=======================*/
+    
+    #formbutton{
+      padding:10px;
+      font-size:16px;
+      background:green;
+    }
+    
+    
+    /* ============================================dashboard=============*/
+
+.append{
+	width:100%;
+	margin:auto;
+	padding : 4% 0 4% 0;
+		
+	
+}
+
+customitem{
+	width:100%;
+	display:flex;
+	flex-wrap:wrap;
+	align-items:center;
+
+}
+    
+   

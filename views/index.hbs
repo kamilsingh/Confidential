@@ -1,0 +1,480 @@
+<html>
+<head>
+<title> fit birds </title>
+<link rel="stylesheet" href="/css/first2.css">
+<style>
+
+.mass
+{
+	margin:auto;
+	padding:5px;
+}
+
+</style>
+</head>
+ <body>
+    <nav>
+    <ul class="top" id="drop">
+    <li><a  href="/" id="logopad"><image src="/images/weblogo.png" alt="Fitbirds hoarding"  id="logofix"/></a></li>
+    <li><a  href="/dash" >CATALOUG</a></li>
+    <li><a onclick="formfeed()">FEEDBACK</a></li>
+    <li><a  href="#about" >ABOUT US</a></li>
+    <li><a  href="mailto:officialkam9@gmail.com" >CONTACT US</a></li>
+    <li class="right"><a href="/login" >LOG IN</a>  </li>  
+    <li class="right"> <a href="/signup" >SIGN UP</a></li>
+    <li class="dropdown"><a href="#" onclick="drop()">&#9776</a></li>
+   </ul>
+  </nav>
+   <div class="tophod">
+  <div class="col11 hoard"> </div> <div class="col15 hoard"><p id="formfeed"> </p> </div>
+ </div>
+ <div class="container"  id="grad">
+   <div class="row">
+     <div class="col0" >        
+      <div class="lrow">
+       <h2> Height</h2> <input class="inputbox" id="height" name="height" type="text" placeholder="Height in(cm)">
+       <h2> Weight</h2> <input class="inputbox"  id="weight" name="weight" type="text" placeholder="Weight in(kgs)">
+      </div>
+      <div class="mass">
+       <button class="bmi"  onclick="bmi()"> CALCULATE BMI</button>
+       <div><span id="result"> your BMI results will appear here</span></div>
+      </div>
+     </div>
+      <div class="col1">
+        <div class="rrow">
+          <div class="fixer">
+           <iframe width="560" height="315" src="https://www.youtube.com/embed/vG_Bs0QLc3I" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+          </div>
+        </div>
+      </div>
+   </div>
+  </div>
+ 
+   <header style="border:9px inset; width:100%">
+   <h1 class="sec2-head" align="center"> <marquee  class="movintext" direction="left" scrollamount="15"> Hey NewBie!!!! Fitbird Welcomes you </marquee> <marquee  direction="right" scrollamount="15">Lets bring new Beginning together!!!! </marquee>
+  <form action="/track" method="post" onsubmit="return searchfood()"> <input type="search"  name="searchfood" id="searchfood" placeholder="Search over 400 millions food of your choice(ex. butter)"> <input type="image"  src="images/search icon.jpg" alt="submit" style="margin: -10px 0 -24px -80px;height: 61px;width: 73px;border-radius: 10%;opacity: 0.5;"">  </form>
+  
+  </h1>
+  </header>
+ 
+  <div class="sec2-body">
+    <div class="col15">    
+     <div class="item" id="item1" > 
+      <div class="icon"> 
+     <a href="/calculate" style="text-decoration:none;fontweight:700px;color:white;"> <img class="featureicon" src="/images/foodlove.jpg" width="100px" height="100px" /> <br> Calorie count </a>
+       <p> Keeping a food diary <br>
+       helps you understand your <br>
+       habits and increases your <br>
+       likelihood of hitting your goals.
+      </p>
+      </div>
+    </div>
+    </div>
+    <div class="col15">    
+     <div class="item" id="item1" >
+      <div class="icon"> 
+     <a href="/activity#recommend" style="text-decoration:none;fontweight:700px;color:white;"> <img class="featureicon" src="/images/foodlove.jpg" width="100px" height="100px" /> <br> Nutrition Recommedations </a>
+       <p>
+       Our nutritionists and fitness <br>
+       trainers will create diet and workout <br>
+       plans that will help YOU achieve your goal.
+      </p>
+      </div>
+    </div>
+    </div>
+    <div class="col15">    
+     <div class="item" id="item1" > 
+     <div class="icon"> 
+     <a href="/dietplans" style="text-decoration:none;fontweight:700px;color:white;"> <img class="featureicon" src="/images/foodlove.jpg" width="100px" height="100px" /> <br>  Diet and Workout plans </a>
+       <p>Be it our coaches or Ria, <br>
+        our diet and workout plans have <br>
+       helped over 500,000 users achieve <br>
+       their goal. What are you waiting for?
+       
+      </p>
+      </div>
+    </div>
+    </div>
+    <div class="col15">    
+      <div class="icon"> 
+      <div class="item" id="item1"> 
+     <a href="/activity" style="text-decoration:none;fontweight:700px;color:white;"> <img class="featureicon" src="/images/foodlove.jpg" width="100px" height="100px" /> <br> Track your Activities </a>
+       <p> Powered by 500 Million food logs,<br>
+        20 million messages and a Millennium  <br>
+        of experience, Ria is the world's  <br>
+        first AI coach who will keep you going!
+       
+      </p>
+      </div>
+    </div>
+    </div>
+    <div class="col15" style="margin:auto;">    
+     <div class="item"  id="item1" > 
+       <div class="icon"> 
+     <a href="/profile#appoint" style="text-decoration:none;fontweight:700px;color:white;"> <img class="featureicon" src="/images/foodlove.jpg" width="100px" height="100px" /> <br> Fix appointment </a>
+       <p> Fix your appointment with one of <br>
+        top class coach and fitness masters <br>
+        with 10+ years of fitness experience <br>
+        and more than 50 millions users
+      </p>
+      </div>
+    </div>
+    </div>
+    </div>
+ 
+  <div class="container about" id="about">
+   <div class=row>
+    <div class="col8">
+      <p id="know" align="center">Fitbird is an college  project  inititative which focuses on healthy fitness,halthy Diet<br>
+       well mental welness, and good Healthcare<br>
+        industry.... <br>
+        to know more click Know More Button 
+        <button class="largebutton knowmore" onclick="knowmore()"> Know More </button>
+        </p>
+        
+   </div>
+   <div class="col2">
+    <div class="scene">
+     <image  class="icon" src="/images/foodlove.jpg" > </div>   
+   </div>
+   </div>
+  </div>
+ <footer class="foot">
+   <div class="row">
+    <div class="col3 footcol">
+     <div class="items">            
+
+      <h1> App Based Gamified Process</h1>
+     </div>
+     <ul class="items">
+      <li>Leaderboard</li>
+     <li>Moderated health Clubs</li>
+     <li>Tasks & Objectives</li>
+     <li>Instant follow ups</li>
+    </ul> 
+   </div>
+   <div class="col3 footcol">
+    <div class="items">
+     <h1> High Engagement </h1>
+    </div>
+    <ul class="items">
+     <li>Marketing & Promotion</li>
+     <li>Fitness & Nutrition drives</li>
+     <li>Fitness & Nutrition drives</li>
+     <li>Registration Kiosks</li>
+     <li>Webinars & Lives</li>
+    </ul>
+   </div>
+
+   <div class="col3 footcol">
+    <div class="items">
+     <h1> Health Delivered </h1>
+    </div>
+   <ul class="items">
+    <li> Highly Qualified Coaches</li>
+    <li>Diet & Workout Plans</li>
+    <li> Content Educate Users</li>
+    <li>Personalised Coaching </li>
+    </ul>
+   </div> 
+  
+  <div class="col3 footcol">
+  <div  class="items">
+   <h1 >Measurable Impact</li>
+  </div>
+  <ul class="items">
+   <li> Monthly Company Report</li>
+   <li>Individual Progress</li>
+   <li> Actionable Insight</li>
+   <li> Dashboards</li>
+  </ul> 
+  </div>
+<div class="contactus">
+ <a href="http://www.fb.com/kamil_rajput" class='endstrip'>Facebook</a>
+  <a href="http://www.yt.com/kamil_rajput" class='endstrip'>YouTube</a> 
+ <a href="http://www.instagram.com/kamil_rajput" class='endstrip'>Instagram</a>
+ <a href="http://www.Linkedin.com/kamil_rajput" class='endstrip'>MyClub</a>
+<a href="mailto:officialkam9@gmail.com" class='endstrip'>CONTACT US </a>
+<a class='endstrip'>&copy; Fitbirds 2021</a>
+</div>
+</div>
+  </footer>
+  
+  
+    <script src="/script/javascript.js" type="text/javascript" ></script>
+ 
+    	  
+  
+  <script>
+ 
+  function bmi()
+  {
+      var res=document.getElementById("result");
+      
+       var h=parseInt(document.getElementById("height").value);
+        var w=parseInt(document.getElementById("weight").value);
+         var str="";
+         var cat="";
+          if(isNaN(h)||isNaN(w))
+            {
+              alert(" enter the valid height or weight");
+              }
+              else
+             {// alert("click ok to proceed");
+                var str=w/((h/100)*(h/100));
+              //  var str=res.substr(0,res.indexOf(".")+2);
+                   str=str.toFixed(2);
+                   if(str<18)
+                     {
+                       cat="under-weight";
+                     }
+                     else if(str>=18 && str<=25)
+                     {
+                      cat ="Normal"; 
+                     }
+                     else
+                     {
+                      cat="over-weight";
+                     }
+                     
+                //  alert("ans  "+ str);
+              }
+         // res.innerHTML="done" ;
+          res.innerHTML="your BMI index is : "+str+" Category : "+cat+" <br> <a href='/activity#recommend'> click me to know your nutrition recommedations </a>"; 
+           return true;  
+  }
+  
+  
+  function knowmore(){
+	 
+	  alert("worked");
+	   let str=`<pre> 
+        Fitbird is an college project inititative which focuses on healthy fitness,halthy Diet well mental welness, and good 
+        Healthcare. It is one of the top competitior in the fitness industry. The company has been referred to as 'one of the
+        most influential economic' and cultural forces in the world, as well as the worlds most valuable rand.
+	    Mr fitman founded fitbird for his college project,[11] 
+	    on Oct 5, 2021. It starts as an online marketplace for
+	    healthcare but expanded to mental wellness,healthcare,
+	    healthy diet plans, and much more. 
+	       
+	    Fitbirds is known for its disruption of well-established 
+	    industries through technological innovation and mass scale.
+	    It is the world largest online healthcare market,assistant 
+	    provider,live-streaming platform and cloud computing platform
+	    as measured by revenue and market, capitalization.It is the 
+	    largest Internet company by revenue in the world.[20] It is the
+	    largest employer in the United States[21] and one of the worlds 
+	    most valuable companies. As of 2020, WE have the highest global 
+	    brand valuation.
+	    
+	    Fitbird disruption of well-established  industries through technological innovation and mass scale.
+	    It is the world largest online healthcare market,assistant  provider,live-streaming platform and cloud computing platform
+	    as measured by revenue and market, capitalization.It is the largest Internet company by revenue in the world.[20] It is the
+	    largest employer in the United States[21] and one of the worlds most valuable companies. As of 2020, WE have the highest global brand valuation.</pre>`
+	       console.log(str);
+	    document.getElementById("know").innerHTML=str+"<br> <button class='smallbutton' onclick='closing()'>Back </button>"
+	    
+	     
+   } 
+  
+ 
+  function closing(){
+	  
+	  alert('worked');
+	  let str="Fitbird is an college  project  inititative which focuses on healthy fitness,halthy Diet well mental welness, and good Healthcare";
+	  
+	  document.getElementById("know").innerHTML=str+'<br> <button class="largebutton knowmore" onclick="knowmore()"> Know More </button>';
+	  
+  }
+  
+  
+    	
+    	  function present(){
+    		  var res=document.getElementById("result");
+    		  var str="<div> <label>  "
+    		  
+    		  
+    	  }
+    	  
+    	  async function recommend(){
+    		 var res=document.getElementById("result");
+    		 
+    		 
+    		 
+    		 const data={name:"kamil",sec:"singh"}
+        	  const opt={method:'POST',
+        	     headers:{ 'Content-Type': 'application/json'},
+        	     body:JSON.stringify(data),
+        	  };
+        	  alert("please wait...!!!!");
+        	  const resp=await fetch('http://localhost/recommend',opt)  
+        	  const final_result=await resp.json();
+        	  console.log(final_result);
+        	    alert(final_result.status);
+    		  
+    		  
+    	  }
+  </script>
+  <style>
+  .about{
+   background:white;
+   border-radius:127px;
+  
+  }
+  
+  
+    article p{
+  font-size:25px;
+  line-height:1.2;
+  padding:10px;
+  margin:auto;
+  }
+  
+  
+  
+  
+  .scene{
+     display:block;
+     margin: 20px 0 30px 30px;
+     box-shadow: 0,0,0,1px rgba(0,0,0,.15);
+     
+  }
+  
+  .icon{
+      margin: auto;
+      height: 200px;
+    width: 100%;
+    font-size: 19px;
+    font-weight: 700;
+       
+  }
+  
+  
+  
+  
+  
+  .items h1,h4{
+     color:white;
+     margin:auto;
+     padding:20px;
+     
+  }
+  
+  div.lrow,div.rrow{
+	margin:10px;
+	
+}
+  
+ 
+  .sec2-head{
+	
+align:center;
+font-size:30px;
+    height: 178px;
+    margin: 0;
+    background: url(images/running.jpg);
+    background-repeat: no-repeat;
+    background-size: 1500px 284px;
+}
+
+.sec2-body{
+	display:flex;
+	flex-wrap:wrap;
+	//border:1px solid black;
+	//border-radius:5%;
+	margin-top:100px;
+	
+	
+}
+
+#searchfood{
+
+margin-top: 36px;
+width: 1131px;
+height: 60px;
+border-radius: 10px;
+border: 1px ridge;
+text-align: center;
+font-size: 21px;
+}
+
+.item{
+
+	box-shadow: 0 0 0 1px rgba(0,0,0,.15);
+	padding:10px;
+	margin:40px 10px 40px 10px;
+    border:1px outset;
+	border-radius:5%;
+    height: 247px;
+    text-align:center;
+	}
+#grad {
+	height:auto;
+	background:blue;
+	background: linear-gradient(0deg, green,transparent);
+	background:linear-gradiant(red,blue);	
+	display:flex;
+	flex-wrap:wrap;
+	
+	}
+	
+
+.inputbox{
+height: 38px;
+border-radius: 20px;
+
+}
+	
+	.icon image
+{
+	margin:auto;
+	border-radius:50%; 
+	
+	
+}
+
+.icon label{
+	font-weight:700px;
+	text-transform:lower-case;
+	
+	
+	
+}
+
+.about{
+text-color:green;
+text-align:center;
+font-size:25px;
+background: white;
+border-radius: 50px;
+    margin: 0 0 69px 0;}	
+
+.fixer iframe{
+	position:relative;
+	width:100%;
+     overflow:hidden;
+}
+
+.featureicon{
+    border-radius: 50%;
+    
+}
+
+
+.movintext{
+height: 84px;
+    color: black;
+    font-size: 31px;
+    font-family: cursive;
+
+}
+.knowmore{
+   margin:0 auto 0 auto;
+}
+
+
+  </style>
+  </body>
+  </html>
+
+   

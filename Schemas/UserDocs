@@ -1,0 +1,10 @@
+ 
+ var mongoose = require('mongoose');
+ userDocSchema= new mongoose.Schema( 
+    {
+     user:{ type:mongoose.Schema.Types.ObjectId,ref:'signup'},
+     docName:'String',
+     docFile:'String'
+    });
+  
+  module.exports=mongoose.model('userDocument',userDocSchema);

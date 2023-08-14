@@ -1,0 +1,48 @@
+var mongoose = require('mongoose')
+mongoose.connect('mongodb://localhost/kammm',{useNewUrlParser: true },{useUnifiedTopology:true});
+
+var db= mongoose.connection;
+db.on('error',console.error.bind(console,'connection error:'));
+db.once('open',function(){
+console.log("we rare connecting");
+
+});
+
+
+//creation of class schema
+var love= new mongoose.Schema({
+    name:String
+});
+ 
+
+love.methods.intro= function()
+{
+   var greeting = "My name is "+this.name
+     console.log(greeting);
+}
+
+
+ //inserting into colection Love arg1
+var Love = mongoose.model('Love',love);
+
+//here obj is made using model creation
+   var loveobj= new Love({ name : 'loveparam'});
+   console.log(loveobj.name);
+   loveobj.intro();
+
+   loveobj.save(function(err,love){
+   if(err) return console.log(err);
+     love.intro();
+   
+   });
+   
+   Love.find({ name:"loveparam"},function(err,arg2){
+         if(err) return console.log(err);
+         console.log(arg2);
+   
+   });
+   
+   
+   
+   
+ 

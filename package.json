@@ -1,0 +1,61 @@
+{
+  "name": "sarkari-scraper",
+  "version": "1.0.0",
+  "description": "web portal to provide jobs.",
+  "main": "app.js",
+  "author": "kammy",
+  "license": "ISC",
+  "scripts": {
+    "start": "nodemon app.js &&npm run build && npm run link && npm run build:watch",
+    "build": "npx babel src --delete-dir-on-start --out-dir lib",
+    "build:watch": "npx nodemon",
+    "lint": "npx eslint ./src",
+    "clean": "rm -rf ./lib",
+    "link": "npm link",
+    "unlink": "npm unlink",
+    "setup": "npm run build && npm run link",
+    "remove": "npm run unlink && npm run clean",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "bin": {
+    "sarkari-scraper": "./lib/commands/sarkari-scraper/sarkari-scraper.js"
+  },
+  "dependencies": {
+    "axios": "^0.24.0",
+    "bcrpyt": "^2.0.0",
+    "bcryptjs": "^2.4.3",
+    "body-parser": "^1.19.0",
+    "cheerio": "^1.0.0-rc.10",
+    "cookie-parser": "^1.4.5",
+    "cors": "^2.8.5",
+    "ejs": "^3.1.8",
+    "express": "^4.17.1",
+    "express-validator": "^6.15.0",
+    "fitbit-node": "^2.2.0",
+    "formidable": "^2.1.1",
+    "google-auth-library": "^7.10.1",
+    "googleapis": "^88.2.0",
+    "hbs": "^4.1.2",
+    "https": "^1.0.0",
+    "json2csv": "^5.0.6",
+    "jsonwebtoken": "^9.0.0",
+    "mailgen": "^2.0.27",
+    "mongoose": "^6.0.11",
+    "multer": "^1.4.5-lts.1",
+    "nodemailer": "^6.9.1",
+    "nodemailer-smtp-transport": "^2.7.4",
+    "nodemon": "^2.0.22",
+    "pug": "^3.0.2",
+    "query-parse": "^2.0.0",
+    "query-string": "^7.0.1",
+    "request": "^2.88.2",
+    "requests": "^0.3.0",
+    "table": "^6.7.3",
+    "url-parse": "^1.5.3"
+  },
+  "devDependencies": {
+    "@babel/cli": "^7.16.0",
+    "@babel/core": "^7.16.0",
+    "@babel/preset-env": "^7.16.4"
+  }
+}

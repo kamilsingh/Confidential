@@ -1,0 +1,36 @@
+async function confirm(done,i){
+       const itemid='item'+props.pass+i;
+       const quantid='quant'+props.pass+i;
+       const req=document.getElementById(itemid).value;
+       const quantity=document.getElementById(quantid).value;
+      	     if(req===''||req===null)
+      	         {document.getElementById(itemid).style.borderColor="red";
+      	           document.getElementById(quantid).style.borderColor="red";
+      	           alert('Empty item')} 
+      	          else
+      	         { if(done!==1)  
+      	              {add(i+1);}
+      	           document.getElementById(itemid).style.borderColor="black";
+      	           document.getElementById(quantid).style.borderColor="black";
+      	         console.log("req is ",req);
+      	      console.log("quant is",quantity);
+      	        setFitems([...fitems,{item:req,quan:quantity}]);
+                  console.log("req is ",req);
+      	 
+      const resp=await fetch(`https://api.edamam.com/api/food-database/v2/parser?app_id=eb306059&app_key=b6ea433ddc9ee58b9e326e490990f1cd&ingr=${req}&nutrition-type=cooking`); 
+      const final_result=await resp.json();
+            console.log(final_result);
+            
+      
+      const temp={
+           Energy:props.data.Energy+final_result.hints[0].food.nutrients.ENERC_KCAL,
+           Protein:props.data.Protein+final_result.hints[0].food.nutrients.PROCNT,
+           Carbs:props.data.Carbs+final_result.hints[0].food.nutrients.CHOCDF,
+           Fats:props.data.Fats+final_result.hints[0].food.nutrients.FAT,
+           Transfat:props.data.Transfat+final_result.hints[0].food.nutrients.FIBTG}	   
+          props.setData(temp);
+                if(done===1)
+                 {finish();} 
+                 }
+               
+                 }

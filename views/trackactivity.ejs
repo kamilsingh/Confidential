@@ -1,0 +1,471 @@
+<html>
+ <title>
+ Fit birds
+ </title>
+   <head>
+    <link rel="stylesheet" href="/css/first2.css">
+    <meta name="google-signin-scope" content="profile email">
+    <meta name="google-signin-client_id" content="1055590570001-0ho2ga2ra9ot69d55ko8c09san8nase4.apps.googleusercontent.com">
+    <script src="https://apis.google.com/js/platform.js" async defer></script>
+    <style>
+    span{display:inline;}
+      
+      
+      .buttonmeal{
+        height: 37px;
+    background: blue;
+    color: white;
+    font-size: 17px;
+    margin-left: 353px;
+    font-weight: 600;
+    border-radius: 8px;
+    width: 50%;
+
+}
+
+.banner{
+  
+ box-shadow: 0 0 0 1px rgb(0 0 0 / 15%);
+    border: 1px outset;
+    border-radius: 20px;
+    width: 95%;
+    margin: 46px auto 0 auto;
+  }
+  
+  .calculate{
+    width:100%;
+  }
+
+.label{
+
+font-size: 26px;
+    font-family: emoji;
+    color: white;
+    margin-left: 650px;
+
+}
+
+form{
+color:white;
+
+}
+      
+      
+      .head{
+        height:50px;
+        width:20px;
+      }
+      
+      
+      .right{
+          float:right;
+      }
+      
+      
+      .line{
+      display:inline;
+      width:50%;
+      font-color:white;
+      font-weight:700px;
+      font-size:25px;
+      }
+      
+      #img{
+      height:100px;
+      width:60%;
+      margin:0 0 0 101px;
+      }
+      
+     
+      
+      .choose{
+       margin: 0 0 0 50px;
+       height:50px;
+      
+      }
+    
+      .choose1{
+    height: 49px;
+    width: 224px;
+    border-radius: 10px;
+}
+
+.formbutton{
+
+background: blue;
+    color: white;
+    margin: 20px 0 0 83px;
+    padding: 12px;
+           }
+           
+  input{
+  
+  margin:auto;
+  }
+  
+  .custominput{
+    height: 47px;
+    margin: 0px 0 36px 64px;
+  }
+  
+  .banner{
+  
+ box-shadow: 0 0 0 1px rgb(0 0 0 / 15%);
+    border: 1px outset;
+    border-radius: 10%;
+    width: 95%;
+    margin: 46px auto 0 auto;
+  }
+  
+  .topp{
+  text-align:center;
+  height:700px;
+  width:50%;
+  
+  }
+  
+  .middle{
+  text-align: center;
+    margin: 122px auto 0 auto;
+    height: 514px;
+  }
+    </style>
+  </head>
+ <body>
+ <image src="/images/fitbirdlogo.jpg" alt="Fitbirds hoarding"  id="logofix">
+  <nav>
+    <ul class="top" id="drop">
+    <li><a  href="/">HOME</a></li>
+    <li><a  href="/dash" >CATALOUG</a></li>
+    <li><a onclick="formfeed()">FEEDBACK</a></li>
+    <li><a  href="#about" >ABOUT US</a></li>
+    <li><a  href="mailto:officialkam9@gmail.com" >CONTACT US</a></li>
+    <li class="right"><a href="/login" >LOG IN</a>  </li>  
+    <li class="right"> <a href="/signup" >SIGN UP</a></li>
+    <li class="dropdown"><a href="#" onclick="drop()">&#9776</a></li>
+   </ul>
+  </nav>
+   <div class="tophod">
+  <div class="col11 hoard"> </div> <div class="col15 hoard"><p id="formfeed"> </p> </div>
+ </div>
+ <div class="container">
+ <div class="row">  <h1 style="margin:auto;"> Track your fitness</h1></div>
+ <div class="row banner">
+   <div class="calculate">
+       <div id="Lunch">
+        <Label class="label"> Running</Label>
+       <button class="buttonmeal" onclick="track(1)"> Calculate</button></div>
+       <div><p id="expander1">  </p></div>
+        <div> <p id="result2">  </p></div>
+       </div>
+       <div class="calculate">
+       <div id="Lunch">
+        <Label class="label"> Walking</Label>
+       <button class="buttonmeal" onclick="track(2)"> Calculate</button></div>
+       <div><p id="expander2">  </p></div>
+        <div> <p id="result2">  </p></div>
+       </div>
+       <div class="calculate">
+       <div id="Dinner">
+        <Label class="label"> Others</Label>
+       <button class="buttonmeal" onclick="track(3)"> Calculate</button></div>
+       <div><p id="expander3">  </p></font> </div>
+        <div> <p id="result3">  </p></div>
+       </div>
+       <div class="calculate">
+       <div id="snacks">
+        <Label class="label"> Bicycling</Label>
+       <button class="buttonmeal" onclick="track(4)"> Calculate</button></div>
+       <div><p id="expander4" >  </p></div>
+       <div> <p id="result3">  </p></div>
+ </div>
+ 
+ <div class="row">
+   <div id="recommend" class="col18 middle">
+     <div>
+     <fieldset><legend> Your Recommedations<font color="red">* </font> </legend>
+       <form>
+        Age &nbsp; :<input class="inputs" type="text"> <span style="margin-left:-60px;" border="1"> Yrs</span> <br>
+        Height:<input class="inputs" type="number"> <span style="margin-left:-60px; text-align:right;"> Cm </span><br>
+        Weight:<input class="inputs" type="number"> <span style="margin-left:-60px;"> Kg </span> <br>
+       <fieldset style="width:80%; margin:auto;"> <legend> Gender </legend>
+     <input  type = "radio" name = "gender" id="male"> Male
+     <input  type = "radio" name = "gender" id="female"> Female
+      </fieldset>
+        Goal:
+          <select  class="choose1" name="" id="choose2"  onchange="custom2()"> 
+     <option class="inputs" name="" value="">   Choose your goal   </option> <br>
+     <option class="inputs" value="Weight-loss">Weight-loss</option> <br>
+     <option class="inputs" value="Weight-gain">Weight-gain </option> <br>
+     <option class="inputs" value="Maintain-weight"> Maintain-weight </option> <br>
+     <option class="inputs" value="Fat-loss"> Fat-loss</option> <br>
+     <option class="inputs" value="Muscles-gain"> Muscles gain</option> <br>
+     <option name="inputs" class="inputs" value="custom"> custom</option> <br>
+      </select>   <br>
+      <input type="submit" name="submit" class="formbutton">
+       </form>
+     </fieldset>
+     
+     
+     </div> 
+ </div>
+ </div>
+ </div>
+  <footer class="foot">
+   <div class="row">
+    <div class="col3 footcol">
+     <div class="items">            
+
+      <h1> App Based Gamified Process</h1>
+     </div>
+     <ul class="items">
+      <li>Leaderboard</li>
+     <li>Moderated health Clubs</li>
+     <li>Tasks & Objectives</li>
+     <li>Instant follow ups</li>
+    </ul> 
+   </div>
+   <div class="col3 footcol">
+    <div class="items">
+     <h1> High Engagement </h1>
+    </div>
+    <ul class="items">
+     <li>Marketing & Promotion</li>
+     <li>Fitness & Nutrition drives</li>
+     <li>Fitness & Nutrition drives</li>
+     <li>Registration Kiosks</li>
+     <li>Webinars & Lives</li>
+    </ul>
+   </div>
+
+   <div class="col3 footcol">
+    <div class="items">
+     <h1> Health Delivered </h1>
+    </div>
+   <ul class="items">
+    <li> Highly Qualified Coaches</li>
+    <li>Diet & Workout Plans</li>
+    <li> Content Educate Users</li>
+    <li>Personalised Coaching </li>
+    </ul>
+   </div> 
+  
+  <div class="col3 footcol">
+  <div  class="items">
+   <h1 >Measurable Impact</li>
+  </div>
+  <ul class="items">
+   <li> Monthly Company Report</li>
+   <li>Individual Progress</li>
+   <li> Actionable Insight</li>
+   <li> Dashboards</li>
+  </ul> 
+  </div>
+<div class="contactus">
+ <a href="http://www.fb.com/kamil_rajput" class='endstrip'>Facebook</a>
+  <a href="http://www.yt.com/kamil_rajput" class='endstrip'>YouTube</a> 
+ <a href="http://www.instagram.com/kamil_rajput" class='endstrip'>Instagram</a>
+ <a href="http://www.Linkedin.com/kamil_rajput" class='endstrip'>MyClub</a>
+<a href="mailto:officialkam9@gmail.com" class='endstrip'>CONTACT US </a>
+<a class='endstrip'>&copy; Fitbirds 2021</a>
+</div>
+</div>
+  </footer>
+ <script>
+ function track(pass)
+ { alert("working")
+ let p; 
+  if(pass==1)
+   {p=document.getElementById("expander1");
+let str=`<div class="col20 topp" style="margin:0 auto 0 auto;">
+		   <fieldset style="width:80%; margin:80 auto 40 auto;"><legend> Track your Running  </legend>
+		   
+		   <div id="track activity">
+		      <div class="line left"> Choose your Activity  </div > <div class="line right "> Burnt :0 cal </div>  </br>
+		        <div id="img"><img src="running.jpg" alt="run" ></img> </div>
+		     <form>
+		     <div class="choose">
+		     <select  class="choose1" name="choose1" id="choose1" onchange="custom1()">
+		     <option class="inputs" value="">   Choose your Pace    </option>
+		     <option class="inputs" value="Slow"> Slow Running</option>
+		     <option class="inputs" value="Medium"> Medium Running</option>
+		     <option class="inputs" value="Fast"> Fast Running</option>
+		     <option class="inputs" value="Custom"> Custom</option>
+		      </select>
+		      </div>
+		      <div>
+		      Speed <br><input class="inputs"  type="number" id="speed1"><span style="margin-left:-60px;color:black"> Km/hr</span> <br>
+		      Distance <br> <input class="inputs"  type="number" id="distance"><span style="margin-left:-60px;color:black"> Km</span> <br>
+		      <input class="formbutton" type="submit" >
+		     </div>
+		   </form>
+		   </div>
+		   </fieldset>
+		 </div>` 
+	  p.innerHTML=str;
+}
+
+else if(pass==2)
+{p=document.getElementById("expander2");
+
+let str=`<div class="col20 topp" style="margin:0 auto 0 auto;">
+		   <fieldset style="width:80%; margin:80 auto 40 auto;"><legend> Track your Walking  </legend>
+		   
+		   <div id="track activity">
+		      <div class="line left"> Choose your Activity  </div > <div class="line right "> Burnt :0 cal </div>  </br>
+		        <div id="img"><image src="running.jpg" alt="run" ></image> </div>
+		     <form>
+		     <div class="choose">
+		     <select  class="choose1" name="" id="choose2" onchange="custom2()">
+		     <option class="inputs" value="">   Choose your Pace    </option>
+		     <option class="inputs" value="Slow">Slow Walk</option>
+		     <option class="inputs" value="Medium">Medium walk </option>
+		     <option class="inputs" value="Fast"> Fast walk</option>
+		     <option class="inputs" value="Custom"> Custom</option>
+		      </select>
+		      </div>
+		      <div class="runform">
+                Speed <br><input class="inputs" type="number" id="speed2"><span style="margin-left:-60px;color:black"> Km/hr </span> <br> 
+                Distance<br> <input class="inputs"  type="number" id="distance"><span style="margin-left:-60px;color:black"> Km</span> <br> </pre>
+	      <input class="formbutton" type="submit" >
+		     </div>
+		   </form>
+		   </div>
+		   </fieldset>
+		 </div>` 
+	  p.innerHTML=str;   
+}
+
+else if(pass==3)
+{p=document.getElementById("expander3");
+
+let str=`<div class="col15 topp " style="margin:0 auto 0 auto">
+    <fieldset style="width:80%; margin:80 auto 40 auto;"><legend> Track your workout </legend>
+	   <div >
+	      <div  class="line left"> Choose your Activity  </div > <div class="line right "> Burnt :0 cal </div>  </br>
+	        <div id="img"><image src="running.jpg" alt="run" ></image> </div>
+	     <form>
+	     <div class="choose">
+	      <select  class="choose1" name="" id="choose3"  onchange="custom3()">
+	     <option class="inputs" name="" value="">   Choose your 	workout    </option>
+	     <option class="inputs" value="push">pushups</option>
+	     <option class="inputs" value="chest">chest-press </option>
+	     <option class="inputs" value="biceps"> biceps-curl </option>
+	     <option class="inputs" value="press"> leg-press</option>
+	     <option class="inputs" value="shoulder"> shoulder-press</option>
+	     <option name="inputs" class="inputs" value="Custom"> custom</option>
+	      </select>  
+	      
+	      </div>
+	      
+	       <div class="custominput"> <p id="custominput"> </p>   </div>
+	      
+	      <div class="runform">
+	      <label> Reps </label><input class="inputs"type="number" > <span style="margin-left:-60px;"> No.</span> <br>
+	       <label> Set&nbsp; </label><input class="inputs"type="number" style="text-align:center;"> <span style="margin-left:-60px;"> X</span><br>  
+	      <input class="formbutton" type="submit" >
+	     </div>
+	   </form>
+	   </div>
+	   </fieldset>
+	 </div>`
+p.innerHTML=str;
+
+}
+else if(pass==4)
+{  alert("working");
+	p=document.getElementById("expander4");
+let str=`<div class="col15 topp " style="margin:0 auto 0 auto">
+    <fieldset style="width:80%; margin:80 auto 40 auto;"><legend> Track your Bicyling </legend>
+	   <div >
+	      <div  class="line left"> Choose your Activity  </div > <div class="line right "> Burnt :0 cal </div>  </br>
+	        <div id="img"><image src="running.jpg" alt="run" ></image> </div>
+	     <form>
+	      <label> Time </label> <br><input class="inputs"type="number" id="speed4" > <span style="margin-left:-60px;"> No.</span> <br>
+	       <label> Distance </label><br><input class="inputs"type="number" id="speed4"> style="text-align:center;"> <span style="margin-left:-60px;"> X</span><br>  
+	      <input class="formbutton" type="submit" >
+	      
+	     </div>
+	   </form>
+	   </div>
+	   </fieldset>
+	 </div>`
+p.innerHTML=str;
+}
+   		 
+}
+
+function custom1(){
+ 	let p=document.getElementById('choose1').value;
+ 	alert(p);
+ 	
+ 	if(p=='Slow')
+ 	{
+ 		document.getElementById('speed1').value=8;	
+ 	}
+ 	else if(p=='Medium'){
+     		document.getElementById('speed1').value=12;	
+     	   } 
+ 	else if(p=='Fast')
+ 		{
+ 		document.getElementById('speed1').value=17;
+ 		}
+ 	
+ }
+ function custom2(){
+ 	  
+ 	let p=document.getElementById('choose2').value;
+ 	alert(p);
+ 	
+ 	if(p=='Slow')
+ 	{
+ 		document.getElementById('speed2').value=3.5;	
+ 	}
+ 	else if(p=='Medium'){
+     		document.getElementById('speed2').value=5;	
+     	   }
+ 	else if(p=='Fast')
+ 		{
+ 		document.getElementById('speed2').value=7.5;
+ 		}
+ }
+ 
+ 
+ function custom3()
+ { 
+ 	let p=document.getElementById('choose3').value;
+ 	alert(p);
+ 	let q=document.getElementById('custominput');
+  	if(p=='Custom')
+  		{
+  		q.innerHTML="Enter your choice : <br> <input type='text' id='customex' name='customex' class='inputs'>";
+  		
+  		}
+ 	
+ }
+ 
+ function custom4(){
+	  
+ 	let p=document.getElementById('choose4').value;
+ 	alert(p);
+ 	
+ 	if(p=='Slow')
+ 	{
+ 		document.getElementById('speed2').value=3.5;	
+ 	}
+ 	else if(p=='Medium'){
+     		document.getElementById('speed2').value=5;	
+     	   }
+ 	else if(p=='Fast')
+ 		{
+ 		document.getElementById('speed2').value=7.5;
+ 		}
+ }
+ 
+ </script>
+ 
+ 
+ <script  src="/script/javascript.js" type="text/javascript"></script>
+ </body>
+ </html>
+ 

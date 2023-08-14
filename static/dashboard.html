@@ -1,0 +1,273 @@
+<html>
+<head>
+<title>
+Fit birds
+</title>
+<link rel="stylesheet" href="css/first2.css")>
+<script type="text/javascript" src="script/javascript.js"></script>
+</head>
+<body>
+<nav  >
+<ul class="top" id="drop">
+<li><a  href="/" >HOME</a></li>
+<li><a   href="#" >ABOUT</a></li>
+<li><a  href="/dash" >RESOURCES</a></li>
+<li><a  href="#" >CARRERS</a></li>
+<li><a  href="#" >CONTACT US</a></li>
+<li class="right"><a href="/login" >LOG IN</a>  </li>  
+<li class="right"> <a href="/signup" >SIGN UP</a></li>
+<li class="dropdown"><a href="#" onclick="drop()">&#9776</a></li>
+</ul>
+</nav>
+
+<div class="container">
+<div> <h3 align="center">Items Available in Catalog</h3> </div>
+<div class="row">
+ <div class="col3">
+     <h3>  food1</h3>
+     </div>
+<div class="col5">
+     <image src="#" alt="fooditem"/> 
+</div>
+<div class="col3">
+  <div> <h2> Nutriton composition</h2></div>
+  <ol>
+   <li>   Energy :692 kcal </li> 
+   <li> Carbs: 12 </li> 
+   <li> protein: 12 </li> 
+   <li> fats: 12 </li> 
+   <li> trans-fat: 12 </li> 
+   <li> calcium: 12 </li> 
+   <li> iron: 12 </li>    
+ </ol>
+
+</div>
+</div>
+<div class="row">
+ <div class="col3">
+     <h3> food1</h3>
+     </div>
+<div class="col5">
+     <image src='#' alt="fooditem"/> 
+</div>
+<div class="col3">
+  <div> <h2> Nutriton composition</h2></div>
+  <div>
+  <ol>
+   <li>   Energy :692 kcal </li> 
+   <li> Carbs: 12 </li> 
+   <li> protein: 12 </li> 
+   <li> fats: 12 </li> 
+   <li> trans-fat: 12 </li> 
+   <li> calcium: 12 </li> 
+   <li> iron: 12 </li>    
+ </ol>
+ </div>
+
+</div>
+</div>
+<div class="row">
+ <div class="col3">
+     <h3> food1</h3>
+     </div>
+<div class="col5">
+     <image src="#" alt="fooditem"/> 
+</div>
+<div class="col3">
+ <div> <h2> Nutriton composition</h2></div>
+  <ol>
+   <li>   Energy :692 kcal </li> 
+   <li> Carbs: 12 </li> 
+   <li> protein: 12 </li> 
+   <li> fats: 12 </li> 
+   <li> trans-fat: 12 </li> 
+   <li> calcium: 12 </li> 
+   <li> iron: 12 </li>    
+ </ol>
+
+</div>
+</div>
+
+<div class="row">
+ <div class="col3">
+     <h3> food1</h3>
+     </div>
+<div class="col5">
+     <image src="#" alt="fooditem"/> 
+</div>
+<div class="col3">
+ <div> <h2> Nutriton composition</h2></div>
+  <ol>
+   <li>   Energy :692 kcal </li> 
+   <li> Carbs: 12 </li> 
+   <li> protein: 12 </li> 
+   <li> fats: 12 </li> 
+   <li> trans-fat: 12 </li> 
+   <li> calcium: 12 </li> 
+   <li> iron: 12 </li>    
+ </ol>
+
+</div>
+</div><div class="row">
+ <div class="col3">
+     <h3> food1</h3>
+     </div>
+<div class="col5">
+     <image src="#" alt="fooditem"/> 
+</div>
+<div class="col3">
+ <div> <h2> Nutriton composition</h2></div>
+  <ol>
+   <li>   Energy :692 kcal </li> 
+   <li> Carbs: 12 </li> 
+   <li> protein: 12 </li> 
+   <li> fats: 12 </li> 
+   <li> trans-fat: 12 </li> 
+   <li> calcium: 12 </li> 
+   <li> iron: 12 </li>    
+ </ol>
+
+</div>
+</div>
+<div class="row">
+ <div class="col3">
+     <h3> food1</h3>
+     </div>
+<div class="col5">
+     <image src="#" alt="fooditem"/> 
+</div>
+<div class="col3">
+ <div> <h2> Nutriton composition</h2></div>
+  <ol>
+   <li>   Energy :692 kcal </li> 
+   <li> Carbs: 12 </li> 
+   <li> protein: 12 </li> 
+   <li> fats: 12 </li> 
+   <li> trans-fat: 12 </li> 
+   <li> calcium: 12 </li> 
+   <li> iron: 12 </li>    
+ </ol>
+
+</div>
+</div>
+</div>
+<div >
+ <h3 align ="center"> User Added Items</h3>
+</div>
+<div class="append" id="appen">
+      
+</div>
+<div>
+<button onclick="itemsadd()">
+ADD MORE 
+</button>
+<div id="newadd"></div>
+
+</div>
+
+
+
+  
+<script>
+  function itemsadd(event)
+  {    alert("working");
+	var p=document.getElementById("newadd"); 
+	 
+	var data="<div id='temp'>Food Name: <input type='text' id='name'> <br> Upload image :<input type='file' id='image' onchange='fun()' > <br> Nutrients value <br> Energy <input type='text' id='energy' <br> Carbs<input type='text' id='carbs' <br> protein<input type='text' id='proteins' <br> Fats<input type='text' id='fats' <br> TransFat <input type='text' id='transfat' <br> calcium <input type='text' id='calcium' <br> protein<button onclick='listing(event)'>Add </button> </div>";
+	p.innerHTML=data;
+  }
+  
+  
+  function fun(){
+	  
+	  var foodpic=document.getElementById("image");
+	  foodpic.src=URL.createObjectURL(event.target.files[0]); 
+  }
+  
+  
+  function listing(event)
+  {  
+	     
+	  var append=document.getElementById("appen");
+	  var q=document.getElementById("temp");
+	  var foodenergy=document.getElementById("energy").value;
+	  var foodname=document.getElementById("name").value;
+	  var foodpic=document.getElementById("image").src;
+	  var foodcarbs=document.getElementById("carbs").value;
+	   var foodfats=document.getElementById("fats").value;
+	   var foodprotein=document.getElementById("proteins").value;
+	   var foodtransfat=document.getElementById("transfat").value;
+	   var foodcalcium=document.getElementById("calcium").value;
+	  alert("worked");
+	  
+	    q.innerText="";
+	    var data="<div class='row'><div class='col3'> <h3> "+foodname+" </h3> </div> <div class='col5'> <image src="+foodpic+" alt='fooditem' /> </div> <div class='col3'><div><h2> Nutriton compostion </h2> </div><div> <ol><li> Energy:"+foodenergy+" Kcal </li> <li> Carbs:"+foodcarbs+"</li> <li> Protein :"+foodprotein+" </li><li>Fats:"+foodfats+" </li><li>Transfat:"+foodtransfat+"</li> <li>Calcium:"+foodcalcium+"</li> <li> Iron:"+foodcalcium+"</li>  <ol> </div> </div></div>";
+	      let appended=document.createElement("div");
+	      appended.innerHTML=data;
+	      append.appendChild(appended);
+	    
+	  
+	  
+	 
+	  	  
+  }
+ 
+</script>
+ <footer class="foot">
+   <div class="row">
+    <div class="col3 footcol">
+     <div class="items">
+      <h1 > Company</h1>
+     </div>
+     <div class="items">
+      <h4> About</h4>
+    </div>
+    <div class="items">
+     <h4>carreers</h4>
+      </div>  
+   </div>
+   <div class="col3 footcol">
+    <div class="items">
+     <h1> Products</h1>
+    </div>
+    <div class="items">
+     <h4> Supplements</h4>
+    </div>
+    <div class="items">
+     <h4>diets</h4>
+    </div>  
+   </div>
+
+   <div class="col3 footcol">
+    <div class="items">
+     <h1> Support</h1>
+    </div>
+   <div class="items">
+    <h4 > Supplements</h4>
+   </div>
+   <div class="items">
+    <h4 >diets</h4>
+  </div>  
+ </div>
+ <div class="col3 footcol">
+  <div  class="items">
+   <h1 >Achievements</h1>
+  </div>
+  <div class="items">
+   <h4 > Supplements</h4>
+  </div>
+  <div class="items">
+   <h4 >diets</h4>
+  </div>  
+ </div>
+</footer>
+
+
+
+</body>
+</html>
+
+</body>
+</html>
+
+ 

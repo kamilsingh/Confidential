@@ -1,0 +1,83 @@
+<html>
+    <title>Mentee List </title>
+    <style>
+    body{
+	line-height: 1;
+	margin:0;
+	background:orange;
+	background:radial-gradient(lightgreen,orange);
+	padding:0;
+	overflow-x:hidden;
+     }
+</style> 
+    </style>                
+    <body>
+    <ul id='Courses'>
+       
+        <li class='Course selected'>
+          <img class="photo" src='https://i.imgur.com/nkN3Mv0.jpg' />
+          <div class='name'>
+            Andres Perez
+          </div>
+        </li>
+        <li class='Course'>
+          <img class="photo"src='https://i.imgur.com/0I4lkh9.jpg' />
+          <div class='name'>
+            Leah Slaten
+          </div>
+        </li>
+        <li class='Course'>
+          <img class="photo" src='https://i.imgur.com/s2WCwH2.jpg' />
+          <div class='name'>
+            Mario Martinez
+          </div>
+        </li>
+        <li class='Course'>
+          <img class="photo" src='https://i.imgur.com/rxBwsBB.jpg' />
+          <div class='name'>
+            Cynthia Lo
+          </div>
+        </li>
+        <li class='Course'>
+          <img class="photo" src='https://i.imgur.com/tovkOg2.jpg' />
+          <div class='name'>
+            Sally Lin
+          </div>
+        </li>
+        <li class='Course'>
+          <img class="photo" src='https://i.imgur.com/A7lNstm.jpg' />
+          <div class='name'>
+            Danny Tang
+          </div>
+        </li>
+      </ul> 
+      <style>
+        .Course img {
+       width: 45px;
+       height: 45px;
+       border-radius: 30px;
+       border: 2px solid #AAA;
+       object-fit: cover;
+       margin-left: 5px;
+       margin-right: 10px;
+     }
+     
+     .Course .name {
+       font-size: 18px;
+     }
+     
+     .Course.selected {
+       background: #43A047;
+       color: white;
+     }
+     
+     .Course.selected img {
+       border-color: white;
+     }
+     
+     .Course:not(.selected):hover {
+       background: #DDD;
+     }
+       </style>
+</body>
+</html>

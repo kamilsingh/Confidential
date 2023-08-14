@@ -1,0 +1,64 @@
+html
+ title
+  | fit birds
+ style
+  include ../static/css/first2.css
+ script
+  include ../static/script/javascript.js 
+ body
+ <html>
+ <title>
+ Fit birds
+ </title>
+ <head>
+ <link rel="stylesheet" href="css/first2.css">
+ 
+ </head>
+ 
+ <body>
+ <nav  >
+ <ul class="top" id="drop">
+ <li><a  href="/" >HOME</a></li>
+ <li><a   href="#" >ABOUT</a></li>
+ <li><a  href="/dash" >RESOURCES</a></li>
+ <li><a  href="#" >CARRERS</a></li>
+ <li><a  href="#" >CONTACT US</a></li>
+ <li class="right"><a href="/login" >LOG IN</a>  </li>  
+ <li class="right"> <a href="/signup" >SIGN UP</a></li>
+ <li class="dropdown"><a href="#" onclick="drop()">&#9776</a></li>
+ </ul>
+ </nav>
+ <div class="container">
+ <div class="row">
+ 
+  <div class="col12">
+   <div class="breakfast">
+       <button onclick="calc1()"> Calculate Breakfast</button></div>
+       <div> <font color="red"><p id="expander1">   </p></font> </div>
+       <div> <p id="result1">  </p></div>
+       </div>
+       <div class="col12">
+       <div class="Lunch">
+       <button onclick="calc2()"> Calculate Lunch</button></div>
+       <div><font color="red"><p id="expander2"> </p></font></div>
+        <div> <p id="result2">  </p></div>
+       </div>
+       <div class="col12">
+       <div class="Dinner">
+       <button onclick="calc3()"> Calculate Dinner</button></div>
+       <div><font color="red"><p id="expander3">   </p></font> </div>
+        <div> <p id="result3">  </p></div>
+       </div>
+       <div class="col12">
+       <div class="breakfast">
+       <button onclick="calc4()"> Calculate Snackes</button></div>
+     
+       <div><font color="red"><p id="expander4">   </p></font></div>
+        <div> <p id="result4">  </p></div>
+  </div>
+  
+  </div>
+   </div>
+   
+    </body>
+    </html>

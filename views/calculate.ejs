@@ -1,0 +1,27 @@
+ <%-include('partials/head.ejs')%>
+<div class="container">
+ <div class="row">
+    <div><h1> <%=text %>  </h1> </div> 
+    </div>
+    <div class="row">
+     <% for(let it of hints) { %> 
+     <div class="col5 f1">
+       <h3> <%=it.food.label %>  nutrients value </h3>
+       <img src= "<%=it.food.image %>" alt="playful">
+       <li>  <%= it.food.nutrients.ENERC_KCAL %> </li> <br/>
+       <li>  <%= it.food.nutrients.PROCNT %> </li> <br/>
+       <li>  <%= it.food.nutrients.FAT %> </li>
+       <li>  <%= it.food.nutrients.CHOCDF %> </li> 
+       <li>  <%= it.food.nutrients.FIBTG %> </li>
+        </div>
+       <% } %>  
+      </div> 
+   </div>
+   <%-include('partials/footer.ejs')%> 
+  
+   </html>
+   
+   
+   
+   
+   

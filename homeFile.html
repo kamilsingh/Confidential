@@ -1,0 +1,210 @@
+import React from 'react'
+import {Link} from "react-router-dom";
+import {useState,useEffect} from 'react';
+  export  const Meal= (props)=>{   
+             const [popup1,setPopup1]=useState(0);
+              const [popup2,setPopup2]=useState(0);
+               const [popup3,setPopup3]=useState(0);
+                const [popup4,setPopup4]=useState(0);
+                
+              async function savefav(){
+    	  const data={name:"kamil",sec:"india"}
+    	  const opt={method:'POST',
+    	     headers:{ 'Content-Type': 'application/json'},
+    	     body:JSON.stringify(data),
+    	  };
+    	  
+    	 
+    	  alert("saving!!!!");
+    	  const resp=await fetch('http://localhost/saving',opt);
+    	  const final_result=await resp.json();
+    	  console.log(final_result);
+    	    alert(final_result.status);
+    	
+      } 
+                
+                
+             return (
+             <>
+             <div class="container">
+  <div style={{textAlign:'center'}}> <strong> <h3> Calculate your Today Calorie intake  </h3></strong> </div>
+  <div class="row"> 
+  <div class="headleft">
+    <label style={{fontSize:'15px'}}> Nutrients  Intake </label> <br/>
+    <label style={{padding:'7px'}}> Carbs:  </label> <label style={{padding:'7px'}}>0 kcal </label><br/>
+     <label style={{padding:'7px'}}> Protien: </label> <label style={{padding:'7px'}}>0 gm </label><br/>
+     <label style={{padding:'7px'}}> Fats:  </label> <label style={{padding:'7px'}}>0 gm  </label><br/>
+      <label style={{padding:'7px'}}> Trans-fat :</label> <label style={{padding:'7px'}}> 0gm </label><br/>
+   </div>
+   <div class="result">
+     Total Calories taken : 0 Kcal
+   </div>
+ <div class="row bann">
+ 
+  <div class="col15 block" style={{textAlign:'center'}}>
+   <div id="breakfast">
+        <label  class="label"> BreakFast</label>
+       {
+        popup1===0?<button class="mealcount" onClick={()=>{setPopup1(1);}}> Calculate</button>:<Meals showAlert={props.showAlert} set={setPopup1}  set1={setPopup2} set2={setPopup3} set3={setPopup4}  key={1} />
+       }
+       </div>
+       </div>
+     </div>
+     <div class="row bann">
+       <div class="col15 block" style={{textAlign:'center'}}>
+       <div id="Lunch">
+        <label class="label"> Lunch</label>
+        {
+        popup2===0?<button class="mealcount" onClick={()=>{setPopup2(1);}}> Calculate</button>:<Meals showAlert={props.showAlert} set={setPopup2} set1={setPopup1} set2={setPopup3} set3={setPopup4}  key={2}/>
+       }
+      
+       </div>
+       </div>
+     </div>
+     <div class="row bann">
+       <div class="col15 block " style={{textAlign:'center'}}>
+       <div id="Dinner">
+        <label class="label"> Dinner</label>
+       {
+        popup3===0?<button class="mealcount" onClick={()=>{setPopup3(1);}}> Calculate</button>:<Meals showAlert={props.showAlert} set={setPopup3} set1={setPopup1} set2={setPopup2} set3={setPopup4}  key={3}/>
+       }
+       </div>
+       </div>
+       </div>
+     <div class="row bann" style={{textAlign:'center'}}>
+       <div class="col15 block">
+       <div id="snacks">
+        <label class="label"> Others</label>
+        {
+        popup4===0?<button class="mealcount" onClick={()=>{setPopup4(1)}}> Calculate</button>:<Meals showAlert={props.showAlert} set={setPopup4} set1={setPopup1} set2={setPopup2} set3={setPopup3}  key={4}/>
+        }
+         </div>
+         </div>
+    </div>
+         <div ><p id="favlist"> </p>
+         </div>
+          </div>
+
+   </div>
+             
+             </>
+             
+             )
+             } 
+             
+             
+             
+             
+     const Meals=(props)=>{
+          const [query,setQuery]=useState(null); 
+          const[data,setData]=useState(null);  
+           let n1=parseInt(prompt('enter the number of items in meal')); 
+         let content=[];
+        
+         
+         for(let i=0;i<n1;i++)
+ 	 	 { let quantid="quant";
+           let tempid="item";
+ 	 	  tempid+=i;quantid+=i;
+ 	 	  content.push(<div> <label> Ingredient </label> <input type='text' id={tempid} name={tempid} style={{width:'50%'}} />
+ 	 	  <br/><label> Quantity </label> <input type='number' min='1' name={quantid} id={quantid} style={{width:'30%'}}/>
+ 	 	  <select  class='input' name='s_q' id='s_q'> 
+ 	 	  <option   class='input' value=''>Units</option>
+ 	 	  <option  class='input' value='grams'>grams</option>
+ 	 	  <option  class='input' value='Numbers'>No.</option>
+ 	 	  <option  class='input' value='serving'>Serving</option>
+ 	 	  </select> <br/> </div>); 
+ 	 	  }
+          
+          
+          
+          
+          
+     /*     
+           useEffect(()=>{
+     const fetchdata=async()=>{
+    const resp=await fetch(query); 
+        	  const final_result=await resp.json();
+        	  console.log(final_result);
+        	 setData(final_result);
+               };
+          fetchdata();  	  
+        },);
+    
+    */
+    
+   
+    
+   function confirm(e){
+        e.preventDefault();
+         props.set(0);
+      	alert('Are you sure to submit?');
+      	 let flag=0;
+      	  let str="";
+      	  let str1="";
+      	  const item=[];
+      	  const quant=[];
+      	for(let i=0;i<n1;i++)
+      	{   
+      		item[i]=document.getElementById("item"+i).value;
+      	   quant[i]=document.getElementById("quant"+i).value;
+      	      if(item[i]=="")
+      	      {str1+="\nitem "+(i+1)+" name can't be empty\n"; flag=1;}
+      	      if(quant[i]==""||quant[i]==null||quant[i]==0)
+      	    	     {  str1+="\nquantity "+(i+1)+"can't be empty or zero\n";flag=1;
+      	    	     document.getElementById("quant"+i).value=0;}
+      	  
+      	}
+      	  
+      	   if(flag==1)
+      	   { props.showAlert("Error : ",str1);}
+      	    else
+      	    {
+      	      	for(int i=0;i<item.length;i++) 
+               {setQuery(`https://api.edamam.com/api/food-database/v2/parser?app_id=eb306059&app_key=b6ea433ddc9ee58b9e326e490990f1cd&ingr=${item[i]}&nutrition-type=cooking`);   
+                     alert(query);}
+
+      	    }
+      	        
+         }
+        
+      return (<>
+         {     
+ 	 	  isNaN(n1)===false?
+ 	 	  <form action='/track1' method='post' onSubmit={confirm}>
+ 	 	 <div>
+ 	 	 <h5>
+ 	 	 <label> Give this meal a name</label> <br/>
+ 	 	 <input type='text' id='mealname' name='mealname' style={{width:'70%'}}/> <br/>
+ 	 	  Enter the items in Breakfast 
+         </h5> 
+         <div> {content} </div>
+ 	   </div>
+ 	   <input type="submit"/>
+ 	  </form> 
+ 	 	  :<button class="mealcount" onClick={()=>{props.set(0);}}> Calculate</button>
+ 	 	  }
+ 	 	   
+              </>
+              )
+      
+      } 
+       const Lunch=()=>{
+      return (<>
+              
+              </>)
+      
+      } 
+       const Dinner=()=>{
+      return (<>
+              
+              </>)
+      
+      } 
+       const Snacks=()=>{
+      return (<>
+              
+              </>)
+      
+      } 
+    
