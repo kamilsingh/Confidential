@@ -1,16 +1,9 @@
 /*=====================================modules===============================================*/
-const fs = require('fs');
 const express = require('express');
-const https = require('https');
 const path = require('path')
 const port = process.env.PORT||80;
-const { google } = require("googleapis");
-const request = require("request");
 const nodemailer = require("nodemailer");
 const cors = require("cors");
-const urlParse = require("url-parse");   //to encode the get-request res.send(url.parse(req.url,true).query);
-const urL = require('url');
-const queryParse = require("query-string");  //to encode query in url (get-req);
 const bodyParse = require("body-parser");  //to encode the post- request (req.body)
 const cookieParser = require("cookie-parser");
 const app = express();
@@ -22,18 +15,16 @@ const { body, validationResult } = require('express-validator');
 const PaytmChecksum=require('./Checksum');
 const formidable =require('formidable');
 const Mailgen = require('mailgen');
-const axios = require('axios');
 const multer=require('multer');
 /*==========================middle-wares=======================================================*/
 require('dotenv').config();
-app.use(cors());
+app.use(cors({origin:'*'}));
 app.use(bodyParse.urlencoded({ limit:'50mb',extended: true }));
 app.use(bodyParse.json({limit:'50mb'})); // to reciece json data in requests
 app.use(cookieParser());
 
 app.use(express.urlencoded())
 /* ============================database-Schema===================================================*/
-const Favlist = require('./Schemas/UserExperienceSchema.js');
 const Logindetail = require('./Schemas/UserAccountSchema.js');
 const UserJobDetails = require('./Schemas/userJob.js');
 const JobDetails = require('./Schemas/Jobs.js');
@@ -49,31 +40,30 @@ const mongoose = require('mongoose');
 const dbUrl = process.env.DATABASE;
 mongoose.connect(dbUrl, { useNewUrlParser: true });
 const db = mongoose.connection;
-db.on('error', () => { console.log('connection error:') });
+db.on('error', () => { //console.log('connection error:') });
 db.on('connected', async () => {
-  console.log("mongo  connected");
+  //console.log("mongo  connected");
 });
 
 //===========================set the various-engine========================================================// 
 //app.set('view engine', 'pug');
-app.set('view engine', 'hbs')
 //app.set('views',path.join(__dirname,'newpath'));  //for putting views in other folder
-//hbs.registerpartials(path.join(__dirname,'partials');
 //============================setting the static web===================================================//
-const filepath = path.join(__dirname);
 //app.use('/newname',express.static(filepath,'public'));    //for storing static files in other folder static 
 app.use(express.static(path.join(__dirname, 'public')));  //for storing static files in other directory
 app.use('/css', express.static(path.join(__dirname, '/static/css')));
 app.use('/script', express.static(path.join(__dirname, '/static/script')));
 
-  let usertoken="";
+  
 //=============================global-declares===========================================
-
+let usertoken="";
 let login = false;
 const JWT_SECRET = 'officialkam$9';
 
 let smtpTransport = require('nodemailer-smtp-transport');
 const upload = multer();
+
+
 function checkAuthenticated(req, res, next) {
   if (login == true) { next(); }
   else {
@@ -89,7 +79,7 @@ function checkAuthenticated(req, res, next) {
       user.name = payload.name;
       user.email = payload.name;
       user.picture = payload.picture;
-      console.log(payload);
+      //console.log(payload);
     }
     verify().then(() => {
       req.user = user;
@@ -103,11 +93,10 @@ function checkAuthenticated(req, res, next) {
 }
 app.get('/sendmail',async(req,res)=>{
       
-  console.log('check');
+  //console.log('check');
    try{
   async function main() {
-      // Generate test SMTP service account from ethereal.email
-      // Only needed if you don't have a real mail account for testing
+
       let testAccount = await nodemailer.createTestAccount();
     
       const transporter = nodemailer.createTransport({
@@ -127,9 +116,9 @@ app.get('/sendmail',async(req,res)=>{
         html: "<b>Hello world?</b>", // html body
       });
     
-      console.log("Message sent: %s", info.messageId);
+      //console.log("Message sent: %s", info.messageId);
     
-      console.log("Preview URL: %s", nodemailer.getTestMessageUrl(info));
+      //console.log("Preview URL: %s", nodemailer.getTestMessageUrl(info));
     
       res.json({status:'success',desc:'Sent Succesfully',code:info});
     } 
@@ -139,7 +128,7 @@ app.get('/sendmail',async(req,res)=>{
 
   }catch(e)
   {
-     console.log('error ',e);
+     //console.log('error ',e);
      res.json({status:'error',desc:'Could not sent mail',code:'0'});
   }
 })
@@ -148,7 +137,7 @@ app.post('/sendmail2',(req,res)=>{
   const {userName,userEmail}=req.body; 
   const OTP=Math.floor((Math.random() * 1000000) + 100000);
   otpBox[userEmail]=OTP;
-  console.log(otpBox); 
+  //console.log(otpBox); 
 })
 
 app.post('/sendmail1',(req,res)=>{
@@ -158,7 +147,7 @@ app.post('/sendmail1',(req,res)=>{
     const PASSWORD='jqxdiwihykshvuov';
     const OTP=Math.floor((Math.random() * 1000000) + 100000);   
     otpBox[userEmail]=OTP;
-    console.log(otpBox); 
+    //console.log(otpBox); 
   let transporter = nodemailer.createTransport(smtpTransport({
     service: 'gmail',
     auth: {
@@ -203,7 +192,7 @@ app.post('/sendmail1',(req,res)=>{
   }
 
   transporter.sendMail(message).then(() => {
-      console.log('Email Sent Successfully to ',message.to);  
+      //console.log('Email Sent Successfully to ',message.to);  
     return res.status(201).json({
           msg: "Email Sent Successfully"
       })
@@ -216,9 +205,9 @@ app.post('/sendmail1',(req,res)=>{
 
 app.post('/user/profileUpdate',verifyme,upload.single('file'),async (req, res) => {
  
-  console.log(req.body,req.file);
+  //console.log(req.body,req.file);
     try{
-      console.log('updateing ',req.body.name);
+      //console.log('updateing ',req.body.name);
              if(req.file)
               {
               const field=req.body.name;
@@ -239,9 +228,9 @@ app.post('/user/profileUpdate',verifyme,upload.single('file'),async (req, res) =
                
                let user=await Logindetail.findOne({_id:req.user.id});
                   user['pic']=`${BASE_URL}/download/${file.id}`;
-               console.log(user); 
+               //console.log(user); 
                const updated=await Logindetail.findByIdAndUpdate(req.user.id,{...user});
-                console.log(updated);  
+                //console.log(updated);  
               
             return  res.json({status:'success',data:user,code:1});
               })
@@ -262,15 +251,15 @@ app.post('/user/profileUpdate',verifyme,upload.single('file'),async (req, res) =
            {
             user[field]=value;
            }
-          console.log(user); 
+          //console.log(user); 
           const updated=await Logindetail.findByIdAndUpdate(req.user.id,{...user});
-           console.log(updated);
+           //console.log(updated);
         return  res.json({status:'success',data:user,code:1});   
          }
       }
     catch(e)
     {
-         console.log('error ',e);
+         //console.log('error ',e);
          return res.json({status:'failed',desc:'Error uploading file',code:'0'});
     }
    });  
@@ -282,7 +271,7 @@ app.post('/user/DocumentUpload',verifyme,upload.single('file'), (req, res) => {
   try{
    const {name}=req.body;
    const {buffer,mimetype,originalname}=req.file;
-   console.log(req.body);
+   //console.log(req.body,req.file);
    const newFile = new FileDocs({
     name: name,
     data: buffer,
@@ -301,7 +290,7 @@ app.post('/user/DocumentUpload',verifyme,upload.single('file'), (req, res) => {
     }
     catch(e)
     {
-      console.log('error ',e);
+      //console.log('error ',e);
       return res.json({status:'failed',desc:'Error uploading file',code:'0'});
     }
 });
@@ -329,16 +318,16 @@ app.post('/updatePassword',async (req,res)=>{
       const password1=secPass;
      
      const user=await Logindetail.findOne({email:email});
-        console.log(user);
+        //console.log(user);
           Logindetail.findByIdAndUpdate(user._id,{password:password1},function (err,updated){
             if(err)
             {
-              console.log(err);
+              //console.log(err);
               res.json({status:'failed',desc:'Couldn\'t perfrom the specific action',code:0});
             }
             else
             {   
-               console.log(updated);
+               //console.log(updated);
                  res.json({code:1});
             }
           });
@@ -346,8 +335,8 @@ app.post('/updatePassword',async (req,res)=>{
 
 app.post('/authenOTP',(req,res)=>{
     const temp=parseInt(req.body.OTP); 
-       console.log(temp);
-       console.log(req.body.email);
+       //console.log(temp);
+       //console.log(req.body.email);
   if(temp===otpBox[req.body.email])
    res.json({code:1});
    else
@@ -361,9 +350,9 @@ app.post('/paymentDetails',(req,res)=>{
       form.parse(req,(err,fields,file)=>{
         if(err)
         {
-          console.log(err);
+          //console.log(err);
         }  
-        console.log(fields);
+        //console.log(fields);
         res.send(fields);
 
     })
@@ -387,11 +376,11 @@ app.post('/rechargeViaPaytm',(req,res)=>{
   paytmParams["CALLBACK_URL"]=`${BASE_URL}/paymentDetails`;
   var paytmChecksum =PaytmChecksum.generateSignature(paytmParams, "34567DFGHGFd3456789876");
   paytmChecksum.then(function(checksum){
-    console.log("generateSignature Returns: " + checksum);
+    //console.log("generateSignature Returns: " + checksum);
        let response={...paytmParams,'CHECKSUMHASH':checksum} 
       res.json(response);
   }).catch(function(error){
-    console.log(error);
+    //console.log(error);
   });
 });
 
@@ -420,7 +409,7 @@ app.post('/deleteUserDocument',verifyme,async(req,res)=>{
 app.get('/user/wallet',verifyme,async(req, res) => {
   try{
     const result=await  UserWallet.findOne({user:req.user.id});
-       console.log(result);
+       //console.log(result);
     res.json({ status: "success",data:result, code: 1});
     }catch(e)
     {
@@ -429,16 +418,16 @@ app.get('/user/wallet',verifyme,async(req, res) => {
 });
 
 app.post('/addUserDocument',verifyme,async(req, res) => {
-  console.log(req.body);
+  //console.log(req.body);
   try {    
     const format={user:req.user.id,docName:req.body.name,docFile:req.body.file}
     
   const doc= new UserDocument(format);
-        console.log(doc);
+        //console.log(doc);
         doc.save((err, savedproduct) => {
           if (err) { res.json({ status: "Server Down", code: 0 }); }
           else {
-            console.log(savedproduct);
+            //console.log(savedproduct);
                  res.json({ status: "Saved", code: 1 });
           }
         });
@@ -447,15 +436,15 @@ app.post('/addUserDocument',verifyme,async(req, res) => {
     }
     catch(e)
     {
-      console.log(e);
+      //console.log(e);
       res.json({ status: "Server Down", code: 0 });
     }  
 });
 
 app.get('/getjobs', async(req, res) => {
-  console.log('peeked');
+  //console.log('peeked');
   const data=await JobDetails.find({});  
-console.log(data.length);
+//console.log(data.length);
 return res.json(data);
 });
 
@@ -483,7 +472,7 @@ app.get('/seekjobs', async (req, res) => {
 app.get('/searchjobs', async (req, res) => {
 let { term } = req.query;
   let regex = new RegExp(term, "i");
-  console.log(regex);
+  //console.log(regex);
   let list = [];
   let filterjob = JobDetails.find({ 'index': regex });
   await filterjob.exec(function (err, data) {
@@ -494,12 +483,11 @@ let { term } = req.query;
         res.json({code:1,data:data});
       }
       else {
-        res.json({code:0,data:'No Job available for your query'});
-          
+        res.json({code:0,data:'No Job available for your query'});  
       }
     }
     else {
-      console.log(err);
+      //console.log(err);
       res.json({code:0,data:'Server Error'});
     }
   });
@@ -531,7 +519,7 @@ app.get('/autosuggest', async (req, res) => {
       }
     }
     else {
-      console.log(err);
+      //console.log(err);
       list.push({ index: `Invalid Search with query ${term}` });
       res.jsonp(list);
     }
@@ -606,45 +594,43 @@ app.get('/filterjobs', async (req, res) => {
     info['details.links'] = { $regex: link, $options: "i" };
   }
 
-  console.log(info);
+  //console.log(info);
   const result = await JobDetails.find(info);
   res.json(result);
 
 });
-//=====================================================================================================
+//=====================================================================================================================================
 
-app.post('/glogin',checkAuthenticated,(req, res)=>{
+app.post('/glogin',checkAuthenticated,async (req, res)=>{
   let token = req.body.token;
-  console.log(req.body);
-  verify().then(() => {
+  //console.log(req.body);
+  verify().then( async () => {
     res.cookie('session-token', token);
-    let profile = {
-    firstname: req.body.cred.givenName,lastname: req.body.cred.familyName,birth: 'NA',Age: 'NA',gender: 'NA',mobile: 'NA',email: req.body.cred.email,
-      password: 'NA',pic: req.body.cred.imageUrl,admin:req.body.admin,
-    }
-    console.log(profile);
+   
+   
+  let user=await Logindetail.findOne({ email: profile.email ,admin:profile.admin});
+      try {
 
-    res.json({ status: 'okk', content: profile, code: 1 });
-    // let user=Logindetail.findOne({ email: profile.email ,admin:profile.admin});
-    //     try {
-
-    //       if (!user) {
-               
-    //         let Logindoc = new Logindetail(profile);
-    //         //console.log(Logindoc);
-    //         Logindoc.save((err, savedproduct) => {
-    //           if (err) { res.json({ status: 'error', content: "Server Issue,Please try again later", code: 0 }); }
-    //           else { console.log('saved : ', savedproduct) }
-    //         });
-    //       }
-    //       else {
-        
-    //         }
-    //     }
-    //     catch (e) {
-    //       console.log('database error', e);
-    //       res.json({ status: 'error', content: 'Server Down,Please try again later', code: 0 });
-    //     }
+          if (!user) {
+            let profile = {
+              firstname: req.body.cred.givenName,lastname: req.body.cred.familyName,birth: 'NA',Age: 'NA',gender: 'NA',mobile: 'NA',email: req.body.cred.email,
+                password: 'NA',pic: req.body.cred.imageUrl,admin:req.body.admin,
+              }
+              //console.log('New ',profile);
+            let Logindoc = new Logindetail(profile);
+            //console.log(Logindoc);
+            Logindoc.save((err, savedproduct) => {
+              if (err) { res.json({ status: 'error', content: "Server Issue,Please try again later", code: 0 }); }
+              else { //console.log('saved : ', savedproduct) }
+            });
+          }
+          //console.log(user);
+          res.json({status:'success',content:user,code:0});
+        }
+        catch (e) {
+          //console.log('database error', e);
+          res.json({ status: 'error', content: 'Server Down,Please try again later', code: 0 });
+        }
   });
   async function verify() {
     const ticket = await client.verifyIdToken({
@@ -653,20 +639,20 @@ app.post('/glogin',checkAuthenticated,(req, res)=>{
     });
     const payload = ticket.getPayload();
     const userid = payload['sub'];
-    console.log(payload);
+    //console.log(payload);
   }
 
 });
 
 app.get('/admin/fetchusers',verifyme ,async (req, res) => {
   const result=await Logindetail.find({});
-  console.log(result);
+  //console.log(result);
   res.json(result);})
   
 
 app.get('/admin/fetchfeedbacks',verifyme ,async (req, res) => {
   const result=await Feedback.find({});
-  console.log(result);
+  //console.log(result);
   res.json(result);})
 //=================================================================================================
 app.post('/savefeedback',verifyme,(req, res) => {
@@ -674,11 +660,11 @@ app.post('/savefeedback',verifyme,(req, res) => {
       const format={user:req.user.id,ReferenceId:req.body.id,feedback:req.body.feedback}
       
     const feeds= new Feedback(format);
-          console.log(feeds);
+          //console.log(feeds);
           feeds.save((err, savedproduct) => {
             if (err) { res.json({ status: "Server Down", code: 0 }); }
             else {
-              console.log(savedproduct);
+              //console.log(savedproduct);
                    res.json({ status: "Saved", code: 1 });
             }
           });
@@ -687,7 +673,7 @@ app.post('/savefeedback',verifyme,(req, res) => {
       }
 
   catch (e) {
-    console.log(e);
+    //console.log(e);
     res.json({ status: "failed due to internal error", code: 0 });
   };
 
@@ -702,12 +688,12 @@ app.post('/admin/updatependingjobs',async(req,res) =>{
      { UserJobDetails.findByIdAndUpdate(id,{status:'Done'},function (err,updated){
     if(err)
     {
-      console.log(err);
+      //console.log(err);
       res.json({status:'failed',desc:'Couldn\'t perfrom the specific action',code:'0'});
     }
     else
     {   
-       console.log(updated);
+       //console.log(updated);
          res.json({status:'failed',desc:'Couldn\'t perfrom the specific action',code:''});
     }
   });
@@ -717,12 +703,12 @@ app.post('/admin/updatependingjobs',async(req,res) =>{
     UserJobDetails.findByIdAndUpdate(id,{status:'Action',remark:remark},function (err,updated){
       if(err)
       {
-        console.log(err);
+        //console.log(err);
         res.json({status:'failed',desc:'Couldn\'t perfrom the specific action',code:'0'});
       }
       else
       {   
-         console.log(updated);
+         //console.log(updated);
            res.json(updated);
       }
   });
@@ -734,7 +720,7 @@ app.post('/loginauthen', [
   body('email', 'Enter a valid email').isEmail(),
   body('password', 'Password cannot be blank').exists(),
 ], async (req, res) => {
-    console.log(req.body);
+    //console.log(req.body);
   try {
      
     const error = validationResult(req);
@@ -766,7 +752,7 @@ app.post('/loginauthen', [
     }
   }
   catch (e) {
-       console.log(e);
+       //console.log(e);
     res.json({ title: 'Failed', content: 'Server Issue,Please try again later', code: 0 });
   }
 
@@ -777,7 +763,7 @@ app.post('/loginauthen', [
 app.post('/accountAuthenticate', [
   body('email', 'Enter a valid email').isEmail(),
 ], async (req, res) => {
-    console.log(req.body);
+    //console.log(req.body);
   try {
      
     const error = validationResult(req);
@@ -796,7 +782,7 @@ app.post('/accountAuthenticate', [
     }
   }
   catch (e) {
-       console.log(e);
+       //console.log(e);
     res.json({ title: 'Failed', content: 'Server Issue,Please try again later', code: 0 });
   }
 
@@ -813,7 +799,7 @@ app.get('/refreshjobs', (req,res)=>{
 //=================================================================================================
 app.get('/fetchpendingjobs',verifyme ,async (req, res) => {
     const result=await UserJobDetails.find({status:'Pending',user:req.user.id});
-    console.log(result);
+    //console.log(result);
     res.json(result);
 });
 
@@ -821,12 +807,12 @@ app.get('/fetchactionjobs',verifyme,async (req,res)=>{
   try 
    { 
      const fetched=await UserJobDetails.find({status:'Action',user:req.user.id});
-       console.log(fetched);    
+       //console.log(fetched);    
        res.json(fetched);
    }
    catch(e)
    {
-      console.log(e);
+      //console.log(e);
       res.json({ status: "Bad Error", code: 0 });  
    }
 });
@@ -834,12 +820,12 @@ app.get('/fetchactionjobs',verifyme,async (req,res)=>{
 app.get('/fetchdonejobs',verifyme, async (req,res)=>{
    try{
   const result=await UserJobDetails.find({status:'Done',user:req.user.id});
-    console.log(result);
+    //console.log(result);
     res.json(result);
   }
   catch(e)
   {
-   console.log(e);
+   //console.log(e);
    res.json({ status: "Bad Error", code: 0 });
   }
 })
@@ -847,12 +833,12 @@ app.get('/fetchdonejobs',verifyme, async (req,res)=>{
 app.get('/admin/fetchpendingjobs',verifyme ,async (req, res) => {
    try{
   const result=await UserJobDetails.find({status:'Pending'});
-  console.log(result);
+  //console.log(result);
   res.json(result);
    }
    catch(e)
    {
-    console.log(e);
+    //console.log(e);
     res.json({ status: "Bad Error", code: 0 });
    }
 });
@@ -861,12 +847,12 @@ app.get('/admin/fetchactionjobs',verifyme,async (req,res)=>{
 try 
  { 
    const fetched=await UserJobDetails.find({status:'Action'});
-     console.log(fetched);    
+     //console.log(fetched);    
      res.json(fetched);
  }
  catch(e)
  {
-    console.log(e);
+    //console.log(e);
     res.json({ status: "Bad Error", code: 0 });  
  }
 });
@@ -875,12 +861,12 @@ app.get('/admin/fetchdonejobs',verifyme, async (req,res)=>{
   
  try{
   const result=await UserJobDetails.find({status:'Done'});
-  console.log(result);
+  //console.log(result);
   res.json(result);
 }
 catch(e)
 {
- console.log(e);
+ //console.log(e);
  res.json({ status: "Bad Error", code: 0 });
 }
 })
@@ -889,7 +875,7 @@ app.post('/addjobrequest',verifyme ,async (req, res) => {
   
     const {id}=req.body;
      const matchedjob= await JobDetails.find({_id:id});
-       console.log(matchedjob); 
+       //console.log(matchedjob); 
      if(matchedjob.length===0)
        {
         return res.json({status:'failed',desc:'This job is no longer available',code:2});
@@ -900,12 +886,12 @@ app.post('/addjobrequest',verifyme ,async (req, res) => {
        result.save((err,saved)=>{
               if(err)
                 {
-                   console.log(err);
+                   //console.log(err);
                   res.json({status:'Failed',desc:'Server Error',code:3})
                 }
                 else
                 {
-                console.log(saved);
+                //console.log(saved);
                  res.json({status:'Success',desc: saved,code:1});
                 }
             })
@@ -920,7 +906,7 @@ app.post('/signup', [
   body('password', 'password should conatin atleast 8 character').isLength({ min: 8 })
 
 ], async (req, res) => {
-  console.log("check");
+  //console.log("check");
   const error = validationResult(req);
 
               if (!error.isEmpty()) {
@@ -944,7 +930,7 @@ app.post('/signup', [
           Logindoc.save( async (err, saveduser) => {
 
             if (err) { res.json({ status: 'error', content: "Server Down,Please Try Again Later", code: 1 }); }
-              console.log(saveduser);
+              //console.log(saveduser);
               const data = {
                 user: {
                   id: saveduser.id
@@ -962,7 +948,7 @@ app.post('/signup', [
               userWallet.save( async (err, savedwallet) => {
     
                 if (err) { res.json({ status: 'error', content: "Server Down,Please Try Again Later", code: 1 }); }
-                  console.log(savedwallet);
+                  //console.log(savedwallet);
                      
             });
             const authtoken = jwt.sign(data, JWT_SECRET);
@@ -973,7 +959,7 @@ app.post('/signup', [
         { res.json({ status: 'Failed', content: 'Email already registered', code: 1 }); }
       }
       catch (e) {
-        console.log('database error', e);
+        //console.log('database error', e);
         res.json({ status: 'error', content: 'Server Error,Please Try Again Later', code: 0 });
       }
 
@@ -988,8 +974,127 @@ app.get('*', (req, res) => {
 
 });
 
-app.listen(port, () => {
+const server=app.listen(port, () => {
  
-  console.log(`the app started on port ${port}`);
+  //console.log(`the app started on port ${port}`);
 
 });
+
+const io = require('socket.io')(server,{
+    cors:{
+      origin:'*',
+      method:['GET','POST']
+    }
+})
+
+let socketsConected = new Set()
+let users = {};
+let callUser={}
+let socketToRoom = {};
+let socketToCallRoom = {};
+io.on('connection', onConnected)
+
+function onConnected(socket) {
+  //console.log('Socket connected', socket.id);
+  socketsConected.add(socket.id)
+  io.emit('clients-total', socket.id)
+
+  socket.on('disconnect', () => {
+
+    socketsConected.delete(socket.id);
+    //console.log('Socket disconnected', socket.id,socketsConected.size);
+    const roomID = socketToRoom[socket.id];
+    let room = users[roomID];
+    if (room) {
+        room = room.filter(id => id !== socket.id);
+        users[roomID] = room;
+        socket.broadcast.emit('user left', socket.id);
+    }
+  
+  })
+
+
+  socket.on("joinCall", (data) => {
+       
+   if (callUser[data.name]) {
+             const length = callUser[data.name].length;
+              if (length === data.max)
+              { socket.emit("max no. of users limit exceed",users);
+                 return;
+              }
+              callUser[data.name].push(socket.id);
+              }
+              else
+              {
+                callUser[data.name] = [socket.id];
+              }
+         socketToCallRoom[socket.id] = data.name;
+         const usersInThisRoom = callUser[data.name].filter(id => id !== socket.id);
+         
+         socket.emit("Secured your connection", usersInThisRoom);
+     })
+
+  socket.on('open-message', (data) => {
+    //console.log(data)
+    socket.broadcast.emit('chat-message', data)
+  })
+  socket.on('open-feedback', (data) => {
+    //console.log(data);
+    socket.broadcast.emit('feedback', data)
+  })
+  socket.on('message', (data) => {
+    //console.log(data)
+    socket.broadcast.emit('chat-message', data)
+  })
+  socket.on('feedback', (data) => {
+    //console.log(data);
+    socket.broadcast.emit('feedback', data);
+  })
+  socket.on('callUser', (data) => {
+    //console.log('called',data.userToSignal);
+    socket.broadcast.emit('callUser',
+    data);
+  })
+
+
+  socket.on('answerCall', (data) => {
+    //console.log('answered1',data.type);
+    socket.broadcast.emit('callAccepted', data.signal);
+  })
+
+
+  socket.on("join room", ({roomID,entry}) => {
+         //console.log(roomID,entry);    
+        if (users[roomID]) {
+                  const length = users[roomID].length;
+                   if (length === 2) {
+                      socket.emit("room full",users);
+                      return;
+                  }
+                  users[roomID].push(socket.id);
+              } else {
+                if(entry===2)  
+                     {socket.emit('NoRoom',users[roomID]);
+                      return;}
+                else
+                     users[roomID] = [socket.id];
+              }
+              socketToRoom[socket.id] = roomID;
+              const usersInThisRoom = users[roomID].filter(id => id !== socket.id);
+              socket.emit("all users", usersInThisRoom);
+          });
+      
+    
+          socket.on("sending signal", payload => {
+               //console.log('sending',payload);
+              io.to(payload.userToSignal).emit('user joined', { signal: payload.signal, callerID: payload.callerID,audio:payload.audio });
+          });
+      
+    
+          socket.on("returning signal", payload => {
+            //console.log('return',payload); 
+            io.to(payload.callerID).emit('receiving returned signal', {signal: payload.signal, id: socket.id,audio:payload.audio });
+          });
+      
+    
+}
