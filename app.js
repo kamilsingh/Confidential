@@ -40,7 +40,8 @@ const mongoose = require('mongoose');
 const dbUrl = process.env.DATABASE;
 mongoose.connect(dbUrl, { useNewUrlParser: true });
 const db = mongoose.connection;
-db.on('error', () => { //console.log('connection error:') });
+db.on('error', () => { //console.log('connection error:') 
+     });
 db.on('connected', async () => {
   //console.log("mongo  connected");
 });
@@ -621,8 +622,10 @@ app.post('/glogin',checkAuthenticated,async (req, res)=>{
             //console.log(Logindoc);
             Logindoc.save((err, savedproduct) => {
               if (err) { res.json({ status: 'error', content: "Server Issue,Please try again later", code: 0 }); }
-              else { //console.log('saved : ', savedproduct) }
-            });
+              else { 
+                //console.log('saved : ', savedproduct) 
+                 }
+             });
           }
           //console.log(user);
           res.json({status:'success',content:user,code:0});
